@@ -4,18 +4,29 @@ This is a simple CLI written in Go (best lang), to help you get the title of a p
 
 ## Usage
 
-fork the repo, and type in the terminal:
+You should fork the repo first.
 
+### Get the titile of a page (URL)
 ```sh
-$ safe <url>
+$ safe get <url>
 ```
 
 for example:
 
 ```sh
-$ safe https://github.com # GitHub: Where the world builds software · GitHub
+$ safe get https://github.com # GitHub: Where the world builds software · GitHub
 ```
 
+### Open a page redirectly from the console
+```sh
+$ safe open <url>
+```
+
+for example:
+
+```sh
+$ safe open https://youtube.com # Opens YouTube on your browser
+```
 Cool! right?
 
 ***
