@@ -1,4 +1,4 @@
-# SafeInput
+# SafeCLI
 
 This is a simple CLI written in Go (best lang), to help you get the title of a page before you get into the page.
 
