@@ -11,7 +11,7 @@ import (
 	page "github.com/pkg/browser"
 )
 
-func safe(e error) {
+func safe(e error) { // returns safe error
 	panic(e)
 }
 
@@ -25,7 +25,7 @@ func main() {
 			if len(args) < 3 {
 				log.Fatal("Insert a URL")
 			} else {
-				res, err := http.Get("http://textance.herokuapp.com/title/" + args[2])
+				res, err := http.Get("http://textance.herokuapp.com/title/" + args[2]) // GETs the website title from Textance
 				if err != nil {
 					safe(err)
 				}
@@ -36,16 +36,15 @@ func main() {
 				}
 
 				data := string(body)
-				// final!
-				fmt.Printf("%s\n", data)
+				fmt.Printf("%s\n", data) // sends data
 			}
 		case "open":
 			if len(args) < 3 {
 				log.Fatal("Insert a URL")
 			} else {
-				if strings.HasPrefix(args[2], "http://") || strings.HasPrefix(args[2], "https://") {
+				if strings.HasPrefix(args[2], "http://") || strings.HasPrefix(args[2], "https://") { // scans if it has https:// or http:// then redirect
 					page.OpenURL(args[2])
-				} else {
+				} else { // else, open it on https://
 					err := page.OpenURL("https://" + args[2])
 					if err != nil {
 						safe(err)
