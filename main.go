@@ -1,14 +1,16 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
-	page "github.com/pkg/browser"
-	"log"
-	"io/ioutil"
-	"fmt"
 	"strings"
+
+	page "github.com/pkg/browser"
 )
+
 func safe(e error) {
 	panic(e)
 }
@@ -22,8 +24,8 @@ func main() {
 		case "get":
 			if len(args) < 3 {
 				log.Fatal("Insert a URL")
-			}else {
-				res, err := http.Get("http://textance.herokuapp.com/title/"+args[2])
+			} else {
+				res, err := http.Get("http://textance.herokuapp.com/title/" + args[2])
 				if err != nil {
 					safe(err)
 				}
@@ -36,7 +38,7 @@ func main() {
 				data := string(body)
 				// final!
 				fmt.Printf("%s\n", data)
-				}
+			}
 		case "open":
 			if len(args) < 3 {
 				log.Fatal("Insert a URL")
@@ -44,7 +46,10 @@ func main() {
 				if strings.HasPrefix(args[2], "http://") || strings.HasPrefix(args[2], "https://") {
 					page.OpenURL(args[2])
 				} else {
-					page.OpenURL("https://"+args[2])
+					err := page.OpenURL("https://" + args[2])
+					if err != nil {
+						safe(err)
+					}
 				}
 			}
 		}
