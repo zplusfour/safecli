@@ -18,7 +18,7 @@ func safe(e error) {
 func main() {
 	args := os.Args
 	if len(args) < 2 {
-		log.Fatal("Please insert a URL")
+		log.Fatal("Please insert a command")
 	} else {
 		switch args[1] {
 		case "get":
