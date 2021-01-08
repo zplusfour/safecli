@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	page "github.com/pkg/browser"
+	"github.com/pkg/browser"
 )
 
 func safe(e error) { // returns safe error
@@ -43,9 +43,9 @@ func main() {
 				log.Fatal("Insert a URL")
 			} else {
 				if strings.HasPrefix(args[2], "http://") || strings.HasPrefix(args[2], "https://") { // scans if it has https:// or http:// then redirect
-					page.OpenURL(args[2])
+					browser.OpenURL(args[2])
 				} else { // else, open it on https://
-					err := page.OpenURL("https://" + args[2])
+					err := browser.OpenURL("https://" + args[2])
 					if err != nil {
 						safe(err)
 					}
