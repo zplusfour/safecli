@@ -1,6 +1,6 @@
 # SafeCLI
 
-![badge](https://github.com/zplusfour/safecli/workflows/.github/workflows/go.yml/badge.svg)
+[![CircleCI](https://circleci.com/gh/zplusfour/safecli.svg?style=shield)](https://circleci.com/gh/zplusfour/safecli)
 
 This is a simple CLI written in Go (best lang), to help you get the title of a page before you get into the page.
 
