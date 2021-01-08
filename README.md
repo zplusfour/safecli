@@ -1,4 +1,4 @@
-# SafeCLI
+# SafeCLI &nbsp; [![Build status](https://ci.appveyor.com/api/projects/status/k4aio2mlgpgdsdv8/branch/master?svg=true)](https://ci.appveyor.com/project/zplusfour/safecli/branch/master)
 
 This is a simple CLI written in Go, to help you get the title of a page before you get into the page.
 
