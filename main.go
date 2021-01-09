@@ -1,3 +1,5 @@
+// SafeCLI, created by zplusfour
+
 package main
 
 import (
