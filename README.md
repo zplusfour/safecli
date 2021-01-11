@@ -27,6 +27,18 @@ for example:
 ```sh
 $ safe open https://youtube.com # Opens YouTube on your browser
 ```
+
+### Search, with duckduckgo, bing or google!
+
+```sh
+$ safe search <search engine> <search query>
+```
+
+for example:
+
+```sh
+$ safe search duckduckgo Bill Gates # Opens DuckDuckGo search engine and searchs for 'Bill Gates', on your default browser
+```
 Cool! right?
 
 ***
