@@ -1,4 +1,4 @@
-// SafeCLI, created by zplusfour
+// SafeCLI, created by zplusfour.
 
 package main
 
@@ -53,6 +53,19 @@ func main() {
 					}
 				}
 			}
+        case "search":
+            switch args[2]{
+                case "google":
+                    browser.OpenURL("https://google.com/search?q="+args[3])
+                case "duckduckgo":
+                    browser.OpenURL("https://duckduckgo.com/?q="+args[3])
+                case "bing":
+                    browser.OpenURL("https://bing.com/search?q="+args[3])
+                default:
+                    log.Fatal("Not a search engine")
+            }
+        default:
+            log.Fatal("Could not find this command")
 		}
 	}
 }
