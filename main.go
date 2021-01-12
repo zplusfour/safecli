@@ -69,9 +69,10 @@ func main() {
 				}
 			}
 		case "search":
+			tolast := len(args) - 1
 			switch args[2] {
 			case "google":
-				browser.OpenURL("https://google.com/search?q=" + args[3])
+				browser.OpenURL("https://google.com/search?q=" + args[3:tolast])
 			case "duckduckgo":
 				browser.OpenURL("https://duckduckgo.com/?q=" + args[3])
 			case "bing":
