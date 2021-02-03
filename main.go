@@ -21,7 +21,7 @@ func safe(e error) { // returns safe error
 }
 
 func help() {
-	fmt.Print(color.GreenString("SafeCLI help center:\n\n"))
+	fmt.Print(color.GreenString("SafeCLI help centre:\n\n"))
 	cmds := make(map[string]string)
 
 	cmds[color.CyanString("get <url>")] = color.MagentaString("Gets the title of a page.")
