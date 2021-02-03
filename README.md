@@ -4,19 +4,7 @@ This is a simple CLI written in Go, to help you get the title of a page before y
 
 ## Usage
 
-You should fork the repo first.
-
-### Get the titile of a page (URL)
-```sh
-$ safe get <url>
-```
-
-for example:
-
-```sh
-$ safe get https://github.com # GitHub: Where the world builds software · GitHub
-```
-
+Download `safe` from the releases page
 ### Open a page redirectly from the console
 ```sh
 $ safe open <url>
@@ -37,9 +25,20 @@ $ safe search <search engine> <search query>
 for example:
 
 ```sh
-$ safe search duckduckgo Bill Gates # Opens DuckDuckGo search engine and searchs for 'Bill Gates', on your default browser
+$ safe search duckduckgo "Bill Gates" # Use quotes because of os.Args things, Opens DuckDuckGo search engine and searchs for 'Bill Gates', on your default browser
 ```
-Cool! right?
+
+### Get the title of a site
+
+```sh
+$ safe title <sitename>
+```
+
+for example:
+
+```sh
+$ safe title google.com # Google
+```
 
 ***
 

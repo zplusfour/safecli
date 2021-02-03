@@ -15,7 +15,9 @@ import (
 )
 
 func safe(e error) { // returns safe error
-	panic(e)
+	if e != nil {
+		panic(e)
+	}
 }
 
 func help() {
@@ -29,7 +31,9 @@ func help() {
 	for k := range cmds {
 		fmt.Printf("%s: %s\n%s: %s\n", color.YellowString("Command"), k, color.YellowString("Description"), cmds[k])
 		fmt.Println(color.HiBlackString("----------"))
+
 	}
+	fmt.Println("\n" + color.RedString("NOTE:") + " when you search the web, instead of whitespaces use `-`.")
 }
 
 func main() {
@@ -38,23 +42,6 @@ func main() {
 		help()
 	} else {
 		switch args[1] {
-		case "get":
-			if len(args) < 3 {
-				log.Fatal(color.RedString("Insert a URL"))
-			} else {
-				res, err := http.Get("http://textance.herokuapp.com/title/" + args[2]) // GETs the website title from Textance
-				if err != nil {
-					safe(err)
-				}
-
-				body, err := ioutil.ReadAll(res.Body)
-				if err != nil {
-					safe(err)
-				}
-
-				data := string(body)
-				fmt.Printf("%s\n", color.CyanString(data)) // sends data
-			}
 		case "open":
 			if len(args) < 3 {
 				log.Fatal(color.RedString("Insert a URL"))
@@ -63,23 +50,28 @@ func main() {
 					browser.OpenURL(args[2])
 				} else { // else, open it on https://
 					err := browser.OpenURL("https://" + args[2])
-					if err != nil {
-						safe(err)
-					}
+					safe(err)
 				}
 			}
 		case "search":
-			// tolast := len(args) - 1
 			switch args[2] {
 			case "google":
-				// browser.OpenURL("https://google.com/search?q=" + args[3:tolast])
+				browser.OpenURL("https://google.com/search?q=" + strings.ReplaceAll(args[3], "-", " "))
 			case "duckduckgo":
-				// browser.OpenURL("https://duckduckgo.com/?q=" + args[3])
+				browser.OpenURL("https://duckduckgo.com/?q=" + strings.ReplaceAll(args[3], "-", " "))
 			case "bing":
-				// browser.OpenURL("https://bing.com/search?q=" + args[3])
+				browser.OpenURL("https://bing.com/search?q=" + strings.ReplaceAll(args[3], "-", " "))
 			default:
 				log.Fatal(color.RedString("Not a search engine"))
 			}
+		case "title":
+			res, err := http.Get("http://textance.herokuapp.com/title/" + args[2])
+			safe(err)
+
+			body, err := ioutil.ReadAll(res.Body)
+			safe(err)
+
+			fmt.Println(string(body))
 		default:
 			log.Fatal(color.RedString("Could not find this command"))
 		}
