@@ -56,11 +56,11 @@ func main() {
 		case "search":
 			switch args[2] {
 			case "google":
-				browser.OpenURL("https://google.com/search?q=" + strings.ReplaceAll(args[3], "-", " "))
+				browser.OpenURL("https://google.com/search?q=" + strings.ReplaceAll(args[3], " ", "%20"))
 			case "duckduckgo":
-				browser.OpenURL("https://duckduckgo.com/?q=" + strings.ReplaceAll(args[3], "-", " "))
+				browser.OpenURL("https://duckduckgo.com/?q=" + strings.ReplaceAll(args[3], " ", "%20"))
 			case "bing":
-				browser.OpenURL("https://bing.com/search?q=" + strings.ReplaceAll(args[3], "-", " "))
+				browser.OpenURL("https://bing.com/search?q=" + strings.ReplaceAll(args[3], " ", "%20"))
 			default:
 				log.Fatal(color.RedString("Not a search engine"))
 			}
